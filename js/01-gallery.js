@@ -25,7 +25,7 @@ gallery.addEventListener("click", (event) => {
   if (event.target.nodeName === "IMG") {
     event.preventDefault();
     const lightBox = basicLightbox.create(
-      `<img width="800" height="600" src="${event.target.dataset.source}">`,
+      `<img width="auto" height="auto" src="${event.target.dataset.source}">`,
       {
         onShow: (lightBox) => {
           document.addEventListener("keydown", (event) => {

@@ -28,14 +28,21 @@ gallery.addEventListener("click", (event) => {
       `<img width="auto" height="auto" src="${event.target.dataset.source}">`,
       {
         onShow: (lightBox) => {
-          document.addEventListener("keydown", (event) => {
-            if (event.code === "Escape") {
-              lightBox.close();
-            }
-          });
+          document.addEventListener("keydown", handleCloseByEscape());
         },
+        {
+          onClose: (lightBox) => {
+          document.removeEventListener('keydown', handleCloseByEscape())
+          }
+        }
       }
     );
     lightBox.show();
   }
 });
+
+function handleCloseByEscape (event) => {
+            if (event.code === "Escape") {
+              lightBox.close();
+            }
+          }
